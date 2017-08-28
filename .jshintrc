@@ -1,0 +1,27 @@
+{
+  "boss": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "expr": true,
+  "noarg": true,
+  "onevar": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "browser": true,
+  "passfail": true,  // Stop on first error.
+  "devel": true,
+  "esnext": true,
+
+
+  "globals": {
+    "jQuery": true,
+    "$": true,
+    "JSON": true,
+    "wp": true,
+    "Vue": false,
+    "swal": true,
+    "jsobject": true
+  }
+}
