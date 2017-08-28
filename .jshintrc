@@ -22,6 +22,8 @@
     "wp": true,
     "Vue": false,
     "swal": true,
-    "jsobject": true
+    "jsobject": true,
+    "_": true,
+    "Cookies": true
   }
 }
