@@ -162,15 +162,13 @@ class Woo_Folder_Selection {
 	    if(! is_product() ) return ;
 	    global $post;
         $product = new WC_Product($post->ID);
-        $attb = explode(',', $product->get_attribute('pa_color-picker'));
-        $attributes = array_map('trim', $attb);
-        $data = [];
-        foreach ($attributes as $at){
-            $data[$at] = 0 ;
+        $min_required_qty = get_post_meta($post->ID, '_woo_folder_multiple_min', true);
+        if(empty($min_required_qty)){
+            $min_required_qty = 100;
         }
 		wp_register_style('woo-folder-selection', WFS_ASSETS.'/css/woo-folder-selection.css', [], date('i'));
 		wp_register_script('woo-folder-selection', WFS_ASSETS.'/js/woo-folder-selection.js', ['jquery', 'underscore'], date('i'), true);
-		wp_localize_script('woo-folder-selection', 'jsobject', ['ajaxurl' => admin_url( 'admin-ajax.php' ), 'selections' => $data, 'ID' => $post->ID]);
+		wp_localize_script('woo-folder-selection', 'jsobject', ['ajaxurl' => admin_url( 'admin-ajax.php' ), 'min_required' => $min_required_qty, 'ID' => $post->ID, 'img' => plugins_url( 'woocommerce/assets/images/ajax-loader.gif' )]);
 		wp_enqueue_style('woo-folder-selection');
 		wp_enqueue_script('woo-folder-selection');
 	}

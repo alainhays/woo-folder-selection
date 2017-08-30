@@ -24,8 +24,8 @@ module.exports = function(grunt) {
         },
             woo_folder_selection: {
                 src: [
-                    'assets/js/src/woo-folder-selection.js',
                     'assets/js/vendor/*.js',
+                    'assets/js/src/woo-folder-selection.js',
                 ],
                     dest: 'assets/js/woo-folder-selection.js'
             }
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             }
         }
     },
-        
+
         sass:   {
             all: {
                 files: {
@@ -64,17 +64,17 @@ module.exports = function(grunt) {
             }
         },
 
-        
+
         cssmin: {
             options: {
                 banner: bannerTemplate
             },
             minify: {
                 expand: true,
-                
+
                 cwd: 'assets/css/',
                 src: ['woo-folder-selection.css'],
-                
+
                 dest: 'assets/css/',
                 ext: '.min.css'
             }
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
              options: {
                 livereload: true,
             },
-            
+
             sass: {
                 files: ['assets/css/sass/*.scss'],
                 tasks: ['sass', 'cssmin'],
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
                     debounceDelay: 500
                 }
             },
-            
+
             scripts: {
                 files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
                 tasks: ['jshint', 'concat', 'uglify'],
@@ -225,17 +225,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks( 'grunt-wp-i18n' );
     grunt.loadNpmTasks('grunt-contrib-compress');
-    
+
     grunt.loadNpmTasks('grunt-contrib-sass');
-    
+
     grunt.loadNpmTasks('grunt-contrib-watch');
-    
+
     grunt.loadNpmTasks('grunt-phpcs');
-    
+
     // Default task.
-    
+
     grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin', 'imagemin', 'notify:server'] );
-    
+
 
     grunt.registerTask('release', ['makepot', 'zip']);
     grunt.registerTask('zip', ['clean', 'copy', 'compress']);
